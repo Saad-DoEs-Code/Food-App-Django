@@ -1,0 +1,31 @@
+{% extends 'food/base.html' %}
+
+{% block body %}
+<div class="container my-5 py-5">
+    <div class="row justify-content-center align-items-center">
+
+        <!-- Image -->
+        <div class="col-md-5 text-center mb-4 mb-md-0">
+            <img src="{{ object.item_image }}" alt="{{ item.item_name }}" class="img-fluid rounded shadow-sm"
+                style="max-height: 350px; object-fit: cover;">
+        </div>
+
+        <!-- Details -->
+        <div class="col-md-6">
+            <h1 class="fw-bold mb-3">{{ object.item_name }}</h1>
+            <p class="lead text-muted mb-4">{{ object.item_description }}</p>
+            <p class="text-muted mb-4"><b>Created by: </b>{{ object.user_name }}</p>
+            <h3 class="text-success fw-semibold mb-4">Price: ${{ object.item_price }}</h3>
+
+            <div>
+                <a href="{% url 'food:index' %}" class="btn btn-outline-secondary me-2">← Back to Menu</a>
+                <a href="#" class="btn btn-success px-4">Order Now</a>
+            </div>
+            <div>
+                <a class="btn btn-danger mt-3" href="{% url 'food:delete_item' object.id %}">Delete</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock body %}
